@@ -33,7 +33,21 @@ const HomePage = () => {
     //fetch notes from backend
     const fetchNotes=async()=>{
       try{
-        const res=await api.get('/vanshika');
+        const res=await api.get('/vanshika'); //make a get request to the backend to fetch the notes
+        // here /vanshika is the route defined in the backend to get all notes 
+        //that is app.use("/api/vanshika", notesRoutes); in server.js
+        //this /api/vanshika is prefixed to all the routes defined in notesRoutes.js
+        //so to get all notes we need to make a get request to /vanshika
+        // this is where we are using the axios instance created in lib/axios.js which has the baseURL set to the backend server url
+        //this api/vanshika is appended to the baseURL defined in lib/axios.js
+        //this api/vanshika is just the endpoint to fetch all the notes from the backend
+        //it is not where we define the routes, the routes are defined in the backend in notesRoutes.js file and not where the app is
+        //at this point we are just making a request to that endpoint to fetch the notes
+        //it is similar to making a request to http://localhost:4080/api/vanshika
+        //this api/vanshika endpoint can be anything, it is just a convention to use the resource name as the endpoint and here the resource name is vanshika
+        //so we are using vanshika as the endpoint to fetch all the notes
+        //these endpoints are defined in the backend and we are just making requests to those endpoints from the frontend to get the data
+        
       console.log(res.data);
       setNotes(res.data); //set the notes state with the fetched data
       setIsRateLimited(false); //not rate limited anymore as we are getting the data
